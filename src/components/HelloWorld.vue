@@ -1,20 +1,23 @@
 <template>
   <div class="hello">
     <div v-if="clicked">
-      <h1>Your password is weak. Now.</h1>
-      Don't ever enter your password into random websites.
+
     </div>
-    <transition name="flip" mode="out-in" :duration="{ enter: 1000, leave: 200 }">
-      <div v-if="clicked">
+    <transition name="fade" mode="out-in">
+      <div v-if="clicked" key="hacker">
+        <div>
+          <h1>Your password is weak. Now.</h1>
+          Don't ever enter your password into random websites.
+        </div>
         <img src="../assets/hacker.jpeg" alt="hacker">
       </div>
-      <div v-else>
-        <img alt="angel" src="../assets/angel.jpeg">
+      <div v-if="!clicked" key="angel">
+        <img src="../assets/angel.jpeg" alt="angel">
+        <h1>{{ msg }}</h1>
+        <input v-model="message" placeholder="Enter your password">
+        <button v-on:click="clicked = true">Check</button>
       </div>
     </transition>
-    <h1>{{ msg }}</h1>
-    <input v-model="message" placeholder="Enter your password">
-    <button v-on:click="clicked = true">Check</button>
   </div>
 </template>
 
@@ -43,5 +46,14 @@ li {
 }
 a {
   color: #42b983;
+}
+.fade-enter-active {
+  transition: opacity 3s;
+}
+.fade-leave-active {
+  transition: opacity 3s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>
