@@ -5,11 +5,11 @@
       Don't ever enter your password into random websites.
     </div>
     <transition name="flip" mode="out-in" :duration="{ enter: 1000, leave: 200 }">
-      <div v-if="!clicked">
-        <img alt="angel" src="../assets/angel.jpeg">
+      <div v-if="clicked">
+        <img src="../assets/hacker.jpeg" alt="hacker">
       </div>
       <div v-else>
-        <img src="../assets/hacker.jpeg" alt="hacker">
+        <img alt="angel" src="../assets/angel.jpeg">
       </div>
     </transition>
     <h1>{{ msg }}</h1>
